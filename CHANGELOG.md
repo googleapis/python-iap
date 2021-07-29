@@ -3,14 +3,14 @@
 ### [0.1.2](https://www.github.com/googleapis/python-iap/compare/v0.1.1...v0.1.2) (2021-07-29)
 
 
-### Features
-
-* add Samples section to CONTRIBUTING.rst ([#5](https://www.github.com/googleapis/python-iap/issues/5)) ([2ba31c5](https://www.github.com/googleapis/python-iap/commit/2ba31c5a2ea2e52c4a79410548a252bf8fc0522e))
-
-
 ### Bug Fixes
 
 * enable self signed jwt for grpc ([#9](https://www.github.com/googleapis/python-iap/issues/9)) ([51304a3](https://www.github.com/googleapis/python-iap/commit/51304a327207a233e40308a8b49c9fdeda87c28b))
+
+
+### Documentation
+
+* add Samples section to CONTRIBUTING.rst ([#5](https://www.github.com/googleapis/python-iap/issues/5)) ([2ba31c5](https://www.github.com/googleapis/python-iap/commit/2ba31c5a2ea2e52c4a79410548a252bf8fc0522e))
 
 
 ### Miscellaneous Chores
