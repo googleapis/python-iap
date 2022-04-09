@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -426,7 +426,7 @@ class IdentityAwareProxyOAuthServiceClient(
 
         .. code-block:: python
 
-            from google.cloud import iap_v1
+                    from google.cloud import iap_v1
 
             def sample_list_brands():
                 # Create a client
@@ -507,7 +507,7 @@ class IdentityAwareProxyOAuthServiceClient(
 
         .. code-block:: python
 
-            from google.cloud import iap_v1
+                    from google.cloud import iap_v1
 
             def sample_create_brand():
                 # Create a client
@@ -581,7 +581,7 @@ class IdentityAwareProxyOAuthServiceClient(
 
         .. code-block:: python
 
-            from google.cloud import iap_v1
+                    from google.cloud import iap_v1
 
             def sample_get_brand():
                 # Create a client
@@ -659,7 +659,7 @@ class IdentityAwareProxyOAuthServiceClient(
 
         .. code-block:: python
 
-            from google.cloud import iap_v1
+                    from google.cloud import iap_v1
 
             def sample_create_identity_aware_proxy_client():
                 # Create a client
@@ -735,7 +735,7 @@ class IdentityAwareProxyOAuthServiceClient(
 
         .. code-block:: python
 
-            from google.cloud import iap_v1
+                    from google.cloud import iap_v1
 
             def sample_list_identity_aware_proxy_clients():
                 # Create a client
@@ -826,7 +826,7 @@ class IdentityAwareProxyOAuthServiceClient(
 
         .. code-block:: python
 
-            from google.cloud import iap_v1
+                    from google.cloud import iap_v1
 
             def sample_get_identity_aware_proxy_client():
                 # Create a client
@@ -905,7 +905,7 @@ class IdentityAwareProxyOAuthServiceClient(
 
         .. code-block:: python
 
-            from google.cloud import iap_v1
+                    from google.cloud import iap_v1
 
             def sample_reset_identity_aware_proxy_client_secret():
                 # Create a client
@@ -985,7 +985,7 @@ class IdentityAwareProxyOAuthServiceClient(
 
         .. code-block:: python
 
-            from google.cloud import iap_v1
+                    from google.cloud import iap_v1
 
             def sample_delete_identity_aware_proxy_client():
                 # Create a client
