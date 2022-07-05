@@ -3250,7 +3250,6 @@ def test_identity_aware_proxy_admin_service_transport_auth_adc(transport_class):
     [
         transports.IdentityAwareProxyAdminServiceGrpcTransport,
         transports.IdentityAwareProxyAdminServiceGrpcAsyncIOTransport,
-        transports.IdentityAwareProxyAdminServiceRestTransport,
     ],
 )
 def test_identity_aware_proxy_admin_service_transport_auth_gdch_credentials(

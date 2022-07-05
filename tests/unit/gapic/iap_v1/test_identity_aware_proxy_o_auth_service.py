@@ -2429,7 +2429,6 @@ def test_identity_aware_proxy_o_auth_service_transport_auth_adc(transport_class)
     [
         transports.IdentityAwareProxyOAuthServiceGrpcTransport,
         transports.IdentityAwareProxyOAuthServiceGrpcAsyncIOTransport,
-        transports.IdentityAwareProxyOAuthServiceRestTransport,
     ],
 )
 def test_identity_aware_proxy_o_auth_service_transport_auth_gdch_credentials(
