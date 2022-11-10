@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 
 from google.api_core import client_options as client_options_lib
 from google.api_core import exceptions as core_exceptions
@@ -63,7 +74,7 @@ class IdentityAwareProxyOAuthServiceClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[IdentityAwareProxyOAuthServiceTransport]:
         """Returns an appropriate transport class.
 
@@ -321,7 +332,7 @@ class IdentityAwareProxyOAuthServiceClient(
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, IdentityAwareProxyOAuthServiceTransport, None] = None,
+        transport: Optional[Union[str, IdentityAwareProxyOAuthServiceTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -419,10 +430,10 @@ class IdentityAwareProxyOAuthServiceClient(
 
     def list_brands(
         self,
-        request: Union[service.ListBrandsRequest, dict] = None,
+        request: Optional[Union[service.ListBrandsRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> service.ListBrandsResponse:
         r"""Lists the existing brands for the project.
@@ -497,10 +508,10 @@ class IdentityAwareProxyOAuthServiceClient(
 
     def create_brand(
         self,
-        request: Union[service.CreateBrandRequest, dict] = None,
+        request: Optional[Union[service.CreateBrandRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> service.Brand:
         r"""Constructs a new OAuth brand for the project if one
@@ -587,10 +598,10 @@ class IdentityAwareProxyOAuthServiceClient(
 
     def get_brand(
         self,
-        request: Union[service.GetBrandRequest, dict] = None,
+        request: Optional[Union[service.GetBrandRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> service.Brand:
         r"""Retrieves the OAuth brand of the project.
@@ -668,10 +679,12 @@ class IdentityAwareProxyOAuthServiceClient(
 
     def create_identity_aware_proxy_client(
         self,
-        request: Union[service.CreateIdentityAwareProxyClientRequest, dict] = None,
+        request: Optional[
+            Union[service.CreateIdentityAwareProxyClientRequest, dict]
+        ] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> service.IdentityAwareProxyClient:
         r"""Creates an Identity Aware Proxy (IAP) OAuth client.
@@ -754,10 +767,12 @@ class IdentityAwareProxyOAuthServiceClient(
 
     def list_identity_aware_proxy_clients(
         self,
-        request: Union[service.ListIdentityAwareProxyClientsRequest, dict] = None,
+        request: Optional[
+            Union[service.ListIdentityAwareProxyClientsRequest, dict]
+        ] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListIdentityAwareProxyClientsPager:
         r"""Lists the existing clients for the brand.
@@ -850,10 +865,12 @@ class IdentityAwareProxyOAuthServiceClient(
 
     def get_identity_aware_proxy_client(
         self,
-        request: Union[service.GetIdentityAwareProxyClientRequest, dict] = None,
+        request: Optional[
+            Union[service.GetIdentityAwareProxyClientRequest, dict]
+        ] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> service.IdentityAwareProxyClient:
         r"""Retrieves an Identity Aware Proxy (IAP) OAuth client.
@@ -934,10 +951,12 @@ class IdentityAwareProxyOAuthServiceClient(
 
     def reset_identity_aware_proxy_client_secret(
         self,
-        request: Union[service.ResetIdentityAwareProxyClientSecretRequest, dict] = None,
+        request: Optional[
+            Union[service.ResetIdentityAwareProxyClientSecretRequest, dict]
+        ] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> service.IdentityAwareProxyClient:
         r"""Resets an Identity Aware Proxy (IAP) OAuth client
@@ -1019,10 +1038,12 @@ class IdentityAwareProxyOAuthServiceClient(
 
     def delete_identity_aware_proxy_client(
         self,
-        request: Union[service.DeleteIdentityAwareProxyClientRequest, dict] = None,
+        request: Optional[
+            Union[service.DeleteIdentityAwareProxyClientRequest, dict]
+        ] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes an Identity Aware Proxy (IAP) OAuth client.
