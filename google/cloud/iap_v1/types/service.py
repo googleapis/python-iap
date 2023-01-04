@@ -492,6 +492,9 @@ class AllowedDomainsSettings(proto.Message):
     access to an app and allow access to only the domains that you
     list.
 
+
+    .. _oneof: https://proto-plus-python.readthedocs.io/en/stable/fields.html#oneofs-mutually-exclusive-fields
+
     Attributes:
         enable (bool):
             Configuration for customers to opt in for the
@@ -578,6 +581,9 @@ class AccessDeniedPageSettings(proto.Message):
     page when access is denied to users. If IAP prevents access to
     this page, the default IAP error page will be displayed instead.
 
+
+    .. _oneof: https://proto-plus-python.readthedocs.io/en/stable/fields.html#oneofs-mutually-exclusive-fields
+
     Attributes:
         access_denied_page_uri (google.protobuf.wrappers_pb2.StringValue):
             The URI to be redirected to when access is
@@ -613,6 +619,9 @@ class AccessDeniedPageSettings(proto.Message):
 class AttributePropagationSettings(proto.Message):
     r"""Configuration for propagating attributes to applications
     protected by IAP.
+
+
+    .. _oneof: https://proto-plus-python.readthedocs.io/en/stable/fields.html#oneofs-mutually-exclusive-fields
 
     Attributes:
         expression (str):
