@@ -14,24 +14,21 @@
 # limitations under the License.
 #
 
-from google.auth.transport.requests import AuthorizedSession  # type: ignore
-import json  # type: ignore
-import grpc  # type: ignore
-from google.auth.transport.grpc import SslCredentials  # type: ignore
-from google.auth import credentials as ga_credentials  # type: ignore
-from google.api_core import exceptions as core_exceptions
-from google.api_core import retry as retries
-from google.api_core import rest_helpers
-from google.api_core import rest_streaming
-from google.api_core import path_template
-from google.api_core import gapic_v1
-
-from google.protobuf import json_format
-from requests import __version__ as requests_version
 import dataclasses
+import json  # type: ignore
 import re
 from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
 import warnings
+
+from google.api_core import gapic_v1, path_template, rest_helpers, rest_streaming
+from google.api_core import exceptions as core_exceptions
+from google.api_core import retry as retries
+from google.auth import credentials as ga_credentials  # type: ignore
+from google.auth.transport.grpc import SslCredentials  # type: ignore
+from google.auth.transport.requests import AuthorizedSession  # type: ignore
+from google.protobuf import json_format
+import grpc  # type: ignore
+from requests import __version__ as requests_version
 
 try:
     OptionalRetry = Union[retries.Retry, gapic_v1.method._MethodDefault]
@@ -39,13 +36,14 @@ except AttributeError:  # pragma: NO COVER
     OptionalRetry = Union[retries.Retry, object]  # type: ignore
 
 
-from google.cloud.iap_v1.types import service
 from google.iam.v1 import iam_policy_pb2  # type: ignore
 from google.iam.v1 import policy_pb2  # type: ignore
 from google.protobuf import empty_pb2  # type: ignore
 
-from .base import IdentityAwareProxyAdminServiceTransport, DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from google.cloud.iap_v1.types import service
 
+from .base import DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from .base import IdentityAwareProxyAdminServiceTransport
 
 DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
     gapic_version=BASE_DEFAULT_CLIENT_INFO.gapic_version,
@@ -150,7 +148,12 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
 
 
     """
-    def pre_create_tunnel_dest_group(self, request: service.CreateTunnelDestGroupRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[service.CreateTunnelDestGroupRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_create_tunnel_dest_group(
+        self,
+        request: service.CreateTunnelDestGroupRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[service.CreateTunnelDestGroupRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for create_tunnel_dest_group
 
         Override in a subclass to manipulate the request or metadata
@@ -158,7 +161,9 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_create_tunnel_dest_group(self, response: service.TunnelDestGroup) -> service.TunnelDestGroup:
+    def post_create_tunnel_dest_group(
+        self, response: service.TunnelDestGroup
+    ) -> service.TunnelDestGroup:
         """Post-rpc interceptor for create_tunnel_dest_group
 
         Override in a subclass to manipulate the response
@@ -166,7 +171,12 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_delete_tunnel_dest_group(self, request: service.DeleteTunnelDestGroupRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[service.DeleteTunnelDestGroupRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_delete_tunnel_dest_group(
+        self,
+        request: service.DeleteTunnelDestGroupRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[service.DeleteTunnelDestGroupRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for delete_tunnel_dest_group
 
         Override in a subclass to manipulate the request or metadata
@@ -174,7 +184,11 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         """
         return request, metadata
 
-    def pre_get_iam_policy(self, request: iam_policy_pb2.GetIamPolicyRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[iam_policy_pb2.GetIamPolicyRequest, Sequence[Tuple[str, str]]]:
+    def pre_get_iam_policy(
+        self,
+        request: iam_policy_pb2.GetIamPolicyRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[iam_policy_pb2.GetIamPolicyRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_iam_policy
 
         Override in a subclass to manipulate the request or metadata
@@ -190,7 +204,12 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_iap_settings(self, request: service.GetIapSettingsRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[service.GetIapSettingsRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_iap_settings(
+        self,
+        request: service.GetIapSettingsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[service.GetIapSettingsRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_iap_settings
 
         Override in a subclass to manipulate the request or metadata
@@ -198,7 +217,9 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_get_iap_settings(self, response: service.IapSettings) -> service.IapSettings:
+    def post_get_iap_settings(
+        self, response: service.IapSettings
+    ) -> service.IapSettings:
         """Post-rpc interceptor for get_iap_settings
 
         Override in a subclass to manipulate the response
@@ -206,7 +227,12 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_tunnel_dest_group(self, request: service.GetTunnelDestGroupRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[service.GetTunnelDestGroupRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_tunnel_dest_group(
+        self,
+        request: service.GetTunnelDestGroupRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[service.GetTunnelDestGroupRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_tunnel_dest_group
 
         Override in a subclass to manipulate the request or metadata
@@ -214,7 +240,9 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_get_tunnel_dest_group(self, response: service.TunnelDestGroup) -> service.TunnelDestGroup:
+    def post_get_tunnel_dest_group(
+        self, response: service.TunnelDestGroup
+    ) -> service.TunnelDestGroup:
         """Post-rpc interceptor for get_tunnel_dest_group
 
         Override in a subclass to manipulate the response
@@ -222,7 +250,12 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_tunnel_dest_groups(self, request: service.ListTunnelDestGroupsRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[service.ListTunnelDestGroupsRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_tunnel_dest_groups(
+        self,
+        request: service.ListTunnelDestGroupsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[service.ListTunnelDestGroupsRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_tunnel_dest_groups
 
         Override in a subclass to manipulate the request or metadata
@@ -230,7 +263,9 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_list_tunnel_dest_groups(self, response: service.ListTunnelDestGroupsResponse) -> service.ListTunnelDestGroupsResponse:
+    def post_list_tunnel_dest_groups(
+        self, response: service.ListTunnelDestGroupsResponse
+    ) -> service.ListTunnelDestGroupsResponse:
         """Post-rpc interceptor for list_tunnel_dest_groups
 
         Override in a subclass to manipulate the response
@@ -238,7 +273,12 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_set_iam_policy(self, request: iam_policy_pb2.SetIamPolicyRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[iam_policy_pb2.SetIamPolicyRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_set_iam_policy(
+        self,
+        request: iam_policy_pb2.SetIamPolicyRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[iam_policy_pb2.SetIamPolicyRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for set_iam_policy
 
         Override in a subclass to manipulate the request or metadata
@@ -254,7 +294,12 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_test_iam_permissions(self, request: iam_policy_pb2.TestIamPermissionsRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[iam_policy_pb2.TestIamPermissionsRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_test_iam_permissions(
+        self,
+        request: iam_policy_pb2.TestIamPermissionsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[iam_policy_pb2.TestIamPermissionsRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for test_iam_permissions
 
         Override in a subclass to manipulate the request or metadata
@@ -262,7 +307,9 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_test_iam_permissions(self, response: iam_policy_pb2.TestIamPermissionsResponse) -> iam_policy_pb2.TestIamPermissionsResponse:
+    def post_test_iam_permissions(
+        self, response: iam_policy_pb2.TestIamPermissionsResponse
+    ) -> iam_policy_pb2.TestIamPermissionsResponse:
         """Post-rpc interceptor for test_iam_permissions
 
         Override in a subclass to manipulate the response
@@ -270,7 +317,12 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_update_iap_settings(self, request: service.UpdateIapSettingsRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[service.UpdateIapSettingsRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_update_iap_settings(
+        self,
+        request: service.UpdateIapSettingsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[service.UpdateIapSettingsRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for update_iap_settings
 
         Override in a subclass to manipulate the request or metadata
@@ -278,7 +330,9 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_update_iap_settings(self, response: service.IapSettings) -> service.IapSettings:
+    def post_update_iap_settings(
+        self, response: service.IapSettings
+    ) -> service.IapSettings:
         """Post-rpc interceptor for update_iap_settings
 
         Override in a subclass to manipulate the response
@@ -286,7 +340,12 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_update_tunnel_dest_group(self, request: service.UpdateTunnelDestGroupRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[service.UpdateTunnelDestGroupRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_update_tunnel_dest_group(
+        self,
+        request: service.UpdateTunnelDestGroupRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[service.UpdateTunnelDestGroupRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for update_tunnel_dest_group
 
         Override in a subclass to manipulate the request or metadata
@@ -294,7 +353,9 @@ class IdentityAwareProxyAdminServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_update_tunnel_dest_group(self, response: service.TunnelDestGroup) -> service.TunnelDestGroup:
+    def post_update_tunnel_dest_group(
+        self, response: service.TunnelDestGroup
+    ) -> service.TunnelDestGroup:
         """Post-rpc interceptor for update_tunnel_dest_group
 
         Override in a subclass to manipulate the response
@@ -311,7 +372,9 @@ class IdentityAwareProxyAdminServiceRestStub:
     _interceptor: IdentityAwareProxyAdminServiceRestInterceptor
 
 
-class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminServiceTransport):
+class IdentityAwareProxyAdminServiceRestTransport(
+    IdentityAwareProxyAdminServiceTransport
+):
     """REST backend transport for IdentityAwareProxyAdminService.
 
     APIs for Identity-Aware Proxy Admin configurations.
@@ -324,20 +387,21 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
 
     """
 
-    def __init__(self, *,
-            host: str = 'iap.googleapis.com',
-            credentials: Optional[ga_credentials.Credentials] = None,
-            credentials_file: Optional[str] = None,
-            scopes: Optional[Sequence[str]] = None,
-            client_cert_source_for_mtls: Optional[Callable[[
-                ], Tuple[bytes, bytes]]] = None,
-            quota_project_id: Optional[str] = None,
-            client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool] = False,
-            url_scheme: str = 'https',
-            interceptor: Optional[IdentityAwareProxyAdminServiceRestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "iap.googleapis.com",
+        credentials: Optional[ga_credentials.Credentials] = None,
+        credentials_file: Optional[str] = None,
+        scopes: Optional[Sequence[str]] = None,
+        client_cert_source_for_mtls: Optional[Callable[[], Tuple[bytes, bytes]]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[IdentityAwareProxyAdminServiceRestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -376,7 +440,9 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -387,32 +453,42 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
-        self._interceptor = interceptor or IdentityAwareProxyAdminServiceRestInterceptor()
+        self._interceptor = (
+            interceptor or IdentityAwareProxyAdminServiceRestInterceptor()
+        )
         self._prep_wrapped_messages(client_info)
 
     class _CreateTunnelDestGroup(IdentityAwareProxyAdminServiceRestStub):
         def __hash__(self):
             return hash("CreateTunnelDestGroup")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "tunnelDestGroupId" : "",        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "tunnelDestGroupId": "",
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: service.CreateTunnelDestGroupRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> service.TunnelDestGroup:
+        def __call__(
+            self,
+            request: service.CreateTunnelDestGroupRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> service.TunnelDestGroup:
             r"""Call the create tunnel dest group method over HTTP.
 
             Args:
@@ -429,46 +505,51 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
                     A TunnelDestGroup.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*/iap_tunnel/locations/*}/destGroups',
-                'body': 'tunnel_dest_group',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*/iap_tunnel/locations/*}/destGroups",
+                    "body": "tunnel_dest_group",
+                },
             ]
-            request, metadata = self._interceptor.pre_create_tunnel_dest_group(request, metadata)
+            request, metadata = self._interceptor.pre_create_tunnel_dest_group(
+                request, metadata
+            )
             pb_request = service.CreateTunnelDestGroupRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -487,19 +568,24 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
         def __hash__(self):
             return hash("DeleteTunnelDestGroup")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: service.DeleteTunnelDestGroupRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ):
+        def __call__(
+            self,
+            request: service.DeleteTunnelDestGroupRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ):
             r"""Call the delete tunnel dest group method over HTTP.
 
             Args:
@@ -512,37 +598,42 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
                     sent along with the request as metadata.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'delete',
-                'uri': '/v1/{name=projects/*/iap_tunnel/locations/*/destGroups/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "delete",
+                    "uri": "/v1/{name=projects/*/iap_tunnel/locations/*/destGroups/*}",
+                },
             ]
-            request, metadata = self._interceptor.pre_delete_tunnel_dest_group(request, metadata)
+            request, metadata = self._interceptor.pre_delete_tunnel_dest_group(
+                request, metadata
+            )
             pb_request = service.DeleteTunnelDestGroupRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -553,19 +644,24 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
         def __hash__(self):
             return hash("GetIamPolicy")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: iam_policy_pb2.GetIamPolicyRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> policy_pb2.Policy:
+        def __call__(
+            self,
+            request: iam_policy_pb2.GetIamPolicyRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> policy_pb2.Policy:
             r"""Call the get iam policy method over HTTP.
 
             Args:
@@ -656,11 +752,12 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{resource=**}:getIamPolicy',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{resource=**}:getIamPolicy",
+                    "body": "*",
+                },
             ]
             request, metadata = self._interceptor.pre_get_iam_policy(request, metadata)
             pb_request = request
@@ -669,33 +766,35 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -714,19 +813,24 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
         def __hash__(self):
             return hash("GetIapSettings")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: service.GetIapSettingsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> service.IapSettings:
+        def __call__(
+            self,
+            request: service.GetIapSettingsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> service.IapSettings:
             r"""Call the get iap settings method over HTTP.
 
             Args:
@@ -743,37 +847,42 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
                     The IAP configurable settings.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=**}:iapSettings',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=**}:iapSettings",
+                },
             ]
-            request, metadata = self._interceptor.pre_get_iap_settings(request, metadata)
+            request, metadata = self._interceptor.pre_get_iap_settings(
+                request, metadata
+            )
             pb_request = service.GetIapSettingsRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -792,19 +901,24 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
         def __hash__(self):
             return hash("GetTunnelDestGroup")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: service.GetTunnelDestGroupRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> service.TunnelDestGroup:
+        def __call__(
+            self,
+            request: service.GetTunnelDestGroupRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> service.TunnelDestGroup:
             r"""Call the get tunnel dest group method over HTTP.
 
             Args:
@@ -821,37 +935,42 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
                     A TunnelDestGroup.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/iap_tunnel/locations/*/destGroups/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/iap_tunnel/locations/*/destGroups/*}",
+                },
             ]
-            request, metadata = self._interceptor.pre_get_tunnel_dest_group(request, metadata)
+            request, metadata = self._interceptor.pre_get_tunnel_dest_group(
+                request, metadata
+            )
             pb_request = service.GetTunnelDestGroupRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -870,19 +989,24 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
         def __hash__(self):
             return hash("ListTunnelDestGroups")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: service.ListTunnelDestGroupsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> service.ListTunnelDestGroupsResponse:
+        def __call__(
+            self,
+            request: service.ListTunnelDestGroupsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> service.ListTunnelDestGroupsResponse:
             r"""Call the list tunnel dest groups method over HTTP.
 
             Args:
@@ -901,37 +1025,42 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=projects/*/iap_tunnel/locations/*}/destGroups',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*/iap_tunnel/locations/*}/destGroups",
+                },
             ]
-            request, metadata = self._interceptor.pre_list_tunnel_dest_groups(request, metadata)
+            request, metadata = self._interceptor.pre_list_tunnel_dest_groups(
+                request, metadata
+            )
             pb_request = service.ListTunnelDestGroupsRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -950,19 +1079,24 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
         def __hash__(self):
             return hash("SetIamPolicy")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: iam_policy_pb2.SetIamPolicyRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> policy_pb2.Policy:
+        def __call__(
+            self,
+            request: iam_policy_pb2.SetIamPolicyRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> policy_pb2.Policy:
             r"""Call the set iam policy method over HTTP.
 
             Args:
@@ -1053,11 +1187,12 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{resource=**}:setIamPolicy',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{resource=**}:setIamPolicy",
+                    "body": "*",
+                },
             ]
             request, metadata = self._interceptor.pre_set_iam_policy(request, metadata)
             pb_request = request
@@ -1066,33 +1201,35 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1111,19 +1248,24 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
         def __hash__(self):
             return hash("TestIamPermissions")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: iam_policy_pb2.TestIamPermissionsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> iam_policy_pb2.TestIamPermissionsResponse:
+        def __call__(
+            self,
+            request: iam_policy_pb2.TestIamPermissionsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> iam_policy_pb2.TestIamPermissionsResponse:
             r"""Call the test iam permissions method over HTTP.
 
             Args:
@@ -1140,46 +1282,51 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
                     Response message for ``TestIamPermissions`` method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{resource=**}:testIamPermissions',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{resource=**}:testIamPermissions",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_test_iam_permissions(request, metadata)
+            request, metadata = self._interceptor.pre_test_iam_permissions(
+                request, metadata
+            )
             pb_request = request
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1198,19 +1345,24 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
         def __hash__(self):
             return hash("UpdateIapSettings")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: service.UpdateIapSettingsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> service.IapSettings:
+        def __call__(
+            self,
+            request: service.UpdateIapSettingsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> service.IapSettings:
             r"""Call the update iap settings method over HTTP.
 
             Args:
@@ -1229,46 +1381,51 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
                     The IAP configurable settings.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'patch',
-                'uri': '/v1/{iap_settings.name=**}:iapSettings',
-                'body': 'iap_settings',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "patch",
+                    "uri": "/v1/{iap_settings.name=**}:iapSettings",
+                    "body": "iap_settings",
+                },
             ]
-            request, metadata = self._interceptor.pre_update_iap_settings(request, metadata)
+            request, metadata = self._interceptor.pre_update_iap_settings(
+                request, metadata
+            )
             pb_request = service.UpdateIapSettingsRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1287,19 +1444,24 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
         def __hash__(self):
             return hash("UpdateTunnelDestGroup")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: service.UpdateTunnelDestGroupRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> service.TunnelDestGroup:
+        def __call__(
+            self,
+            request: service.UpdateTunnelDestGroupRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> service.TunnelDestGroup:
             r"""Call the update tunnel dest group method over HTTP.
 
             Args:
@@ -1316,46 +1478,51 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
                     A TunnelDestGroup.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'patch',
-                'uri': '/v1/{tunnel_dest_group.name=projects/*/iap_tunnel/locations/*/destGroups/*}',
-                'body': 'tunnel_dest_group',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "patch",
+                    "uri": "/v1/{tunnel_dest_group.name=projects/*/iap_tunnel/locations/*/destGroups/*}",
+                    "body": "tunnel_dest_group",
+                },
             ]
-            request, metadata = self._interceptor.pre_update_tunnel_dest_group(request, metadata)
+            request, metadata = self._interceptor.pre_update_tunnel_dest_group(
+                request, metadata
+            )
             pb_request = service.UpdateTunnelDestGroupRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1371,84 +1538,89 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
             return resp
 
     @property
-    def create_tunnel_dest_group(self) -> Callable[
-            [service.CreateTunnelDestGroupRequest],
-            service.TunnelDestGroup]:
+    def create_tunnel_dest_group(
+        self,
+    ) -> Callable[[service.CreateTunnelDestGroupRequest], service.TunnelDestGroup]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._CreateTunnelDestGroup(self._session, self._host, self._interceptor) # type: ignore
+        return self._CreateTunnelDestGroup(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def delete_tunnel_dest_group(self) -> Callable[
-            [service.DeleteTunnelDestGroupRequest],
-            empty_pb2.Empty]:
+    def delete_tunnel_dest_group(
+        self,
+    ) -> Callable[[service.DeleteTunnelDestGroupRequest], empty_pb2.Empty]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._DeleteTunnelDestGroup(self._session, self._host, self._interceptor) # type: ignore
+        return self._DeleteTunnelDestGroup(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_iam_policy(self) -> Callable[
-            [iam_policy_pb2.GetIamPolicyRequest],
-            policy_pb2.Policy]:
+    def get_iam_policy(
+        self,
+    ) -> Callable[[iam_policy_pb2.GetIamPolicyRequest], policy_pb2.Policy]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetIamPolicy(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetIamPolicy(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_iap_settings(self) -> Callable[
-            [service.GetIapSettingsRequest],
-            service.IapSettings]:
+    def get_iap_settings(
+        self,
+    ) -> Callable[[service.GetIapSettingsRequest], service.IapSettings]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetIapSettings(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetIapSettings(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_tunnel_dest_group(self) -> Callable[
-            [service.GetTunnelDestGroupRequest],
-            service.TunnelDestGroup]:
+    def get_tunnel_dest_group(
+        self,
+    ) -> Callable[[service.GetTunnelDestGroupRequest], service.TunnelDestGroup]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetTunnelDestGroup(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetTunnelDestGroup(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_tunnel_dest_groups(self) -> Callable[
-            [service.ListTunnelDestGroupsRequest],
-            service.ListTunnelDestGroupsResponse]:
+    def list_tunnel_dest_groups(
+        self,
+    ) -> Callable[
+        [service.ListTunnelDestGroupsRequest], service.ListTunnelDestGroupsResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListTunnelDestGroups(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListTunnelDestGroups(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def set_iam_policy(self) -> Callable[
-            [iam_policy_pb2.SetIamPolicyRequest],
-            policy_pb2.Policy]:
+    def set_iam_policy(
+        self,
+    ) -> Callable[[iam_policy_pb2.SetIamPolicyRequest], policy_pb2.Policy]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._SetIamPolicy(self._session, self._host, self._interceptor) # type: ignore
+        return self._SetIamPolicy(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def test_iam_permissions(self) -> Callable[
-            [iam_policy_pb2.TestIamPermissionsRequest],
-            iam_policy_pb2.TestIamPermissionsResponse]:
+    def test_iam_permissions(
+        self,
+    ) -> Callable[
+        [iam_policy_pb2.TestIamPermissionsRequest],
+        iam_policy_pb2.TestIamPermissionsResponse,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._TestIamPermissions(self._session, self._host, self._interceptor) # type: ignore
+        return self._TestIamPermissions(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def update_iap_settings(self) -> Callable[
-            [service.UpdateIapSettingsRequest],
-            service.IapSettings]:
+    def update_iap_settings(
+        self,
+    ) -> Callable[[service.UpdateIapSettingsRequest], service.IapSettings]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._UpdateIapSettings(self._session, self._host, self._interceptor) # type: ignore
+        return self._UpdateIapSettings(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def update_tunnel_dest_group(self) -> Callable[
-            [service.UpdateTunnelDestGroupRequest],
-            service.TunnelDestGroup]:
+    def update_tunnel_dest_group(
+        self,
+    ) -> Callable[[service.UpdateTunnelDestGroupRequest], service.TunnelDestGroup]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._UpdateTunnelDestGroup(self._session, self._host, self._interceptor) # type: ignore
+        return self._UpdateTunnelDestGroup(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def kind(self) -> str:
@@ -1458,6 +1630,4 @@ class IdentityAwareProxyAdminServiceRestTransport(IdentityAwareProxyAdminService
         self._session.close()
 
 
-__all__=(
-    'IdentityAwareProxyAdminServiceRestTransport',
-)
+__all__ = ("IdentityAwareProxyAdminServiceRestTransport",)
